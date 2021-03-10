@@ -19,7 +19,7 @@ breakpoint-max($name, $breakpoints = $grid-breakpoints)
 media-breakpoint-up($name, $breakpoints = $grid-breakpoints)
   $min = breakpoint-min($name, $breakpoints)
   if $min
-    @media (min-width: $min)
+    @media (min-width $min)
       {block}
   else
     {block}
@@ -27,7 +27,7 @@ media-breakpoint-up($name, $breakpoints = $grid-breakpoints)
 media-breakpoint-down($name, $breakpoints = $grid-breakpoints)
   $max = breakpoint-max($name, $breakpoints)
   if $max
-    @media (max-width: $max)
+    @media (max-width $max)
       {block}
   else
     {block}

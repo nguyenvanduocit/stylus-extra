@@ -4,9 +4,11 @@
   "description": "Useful utilities for working with Stylus",
   "license": "MIT",
   "scripts": {
-    "lint": "stlint"
+    "lint": "stlint",
+    "build": "stylus index.styl -o style.css"
   },
   "files": [
+    "index.styl",
     "styles"
   ],
   "keywords": [

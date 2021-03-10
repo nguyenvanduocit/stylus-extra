@@ -2,25 +2,24 @@
 
 -pos(type, args)
   i = 0
-  position: unquote(type)
+  position unquote(type)
   for j in (1..4)
     if length(args) > i
-      {args[i]}: args[i + 1] is a 'unit' ? args[i += 1] : 0
+      {args[i]} args[i + 1] is a 'unit' ? args[i += 1] : 0
     i += 1
-
 /*
  * Position utility.
  *
  * Synopsis:
  *
- *   fixed: <pos> [n] <pos> [n]
+ *   fixed <pos> [n] <pos> [n]
  *
  * Examples:
  *
- *     fixed: top left
- *     fixed: top 5px left
- *     fixed: top left 5px
- *     fixed: top 5px left 5px
+ *     fixed top left
+ *     fixed top 5px left
+ *     fixed top left 5px
+ *     fixed top 5px left 5px
  *
  */
 
@@ -32,14 +31,14 @@ fixed()
  *
  * Synopsis:
  *
- *   absolute: <pos> [n] <pos> [n]
+ *   absolute <pos> [n] <pos> [n]
  *
  * Examples:
  *
- *     absolute: top left
- *     absolute: top 5px left
- *     absolute: top left 5px
- *     absolute: top 5px left 5px
+ *     absolute top left
+ *     absolute top 5px left
+ *     absolute top left 5px
+ *     absolute top 5px left 5px
  *
  */
 
@@ -51,14 +50,14 @@ absolute()
  *
  * Synopsis:
  *
- *   relative: <pos> [n] <pos> [n]
+ *   relative <pos> [n] <pos> [n]
  *
  * Examples:
  *
- *     relative: top left
- *     relative: top 5px left
- *     relative: top left 5px
- *     relative: top 5px left 5px
+ *     relative top left
+ *     relative top 5px left
+ *     relative top left 5px
+ *     relative top 5px left 5px
  *
  */
 

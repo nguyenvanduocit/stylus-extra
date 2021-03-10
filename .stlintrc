@@ -3,11 +3,17 @@
   "watch": false,
   "path": "./styles",
   "excludes": ["node_modules/"],
-  "stylusParserOptions": {},
-  "reportOptions": {
-    "columnSplitter": " | ",
-    "maxWidth": 70,
-    "minWidth": 70,
-    "truncate": false
+  "rules": {
+    "depthControl": {
+      "indentPref": 2
+    },
+    "mixedSpaces": {
+      "indentPref": 2
+    },
+    "quotePref": ["single"],
+    "useMixinInsteadUnit": false,
+    "color": {
+      "denyRGB": false
+    }
   }
 }

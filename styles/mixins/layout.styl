@@ -1,53 +1,53 @@
 /**
  * Fill the container
- *
- * @param string $color background color
 */
-expand(color = '')
+expand($color = '')
   position absolute
   top 0
+  right 0
   bottom 0
   left 0
-  right 0
+
   width 100%
   height 100%
-  if color
-    background-color color
+  if $color
+    background-color $color
 
 /**
  * Setup background cover
  */
 cover()
-  background-size cover
   background-position center center
+  background-size cover
   background-repeat no-repeat
 
-// Mixin: Columns
+// Mixin Columns
 //
 // For css3 columns. Takes column count (int), column gap (px, em), column width
 // (px, em), and a border-like declaration if you want a column rule. This
 // follows exactly with the css3 spec, it's just quicker.
 //
 // ex. columns()
-// ex. columns: 5
+// ex. columns 5
 // ex. columns(8, 15px, 200px, '1px solid red')
-
-columns($count = 3, $gap = 30px, $width = null, $rule = null)
-  column-count: $count
-  column-gap: $gap
-  column-width: $width if $width
-  column-rule: unquote($rule) if $rule
+columns($count = 3, $gap = 30px, $width, $rule)
+  column-count $count
+  column-gap $gap
+  if $width
+    column-width $width
+  if $rule
+    column-rule unquote($rule)
 
 grid-auto-fit($columnWidth = 200px, $rowHeight = 200px, $gap = 30px)
   display grid
-  grid-template-columns: repeat(auto-fit, minmax($columnWidth, 1fr));
-  grid-auto-rows: $rowHeight;
+  grid-auto-rows $rowHeight
   grid-gap $gap
+  grid-template-columns repeat(auto-fit, minmax($columnWidth, 1fr))
 
-flex-center
+flex-center()
   display flex
   justify-content center
   align-items center
-flex-inline-center
-  flex-center()
+flex-inline-center()
   display inline-flex
+  flex-center()

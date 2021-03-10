@@ -2,52 +2,46 @@
 // Utilities
 // ---------
 
-// Alias: No Select
+// Alias No Select
 // You can't highlight this.
 
 no-select()
-  -webkit-touch-callout: none
-  user-select: none
+  -webkit-touch-callout none
+  user-select none
 
-// Alias: B
-// Border, but quicker and with an intelligent default.
-
-b()
-  arguments = unquote('1px solid') unless arguments
-  border: arguments
-
-// Alias: Transition
+// Alias Transition
 //
 // Transition with an intelligent default.
 //
 // ex. transition()
-// ex. transition: color 1s ease
+// ex. transition color 1s ease
 // ex. transition(color 1s ease, background 2.4s linear)
 
 transition()
-  arguments = unquote('all .3s ease') unless arguments
-  transition: arguments
+  if !arguments
+    arguments = unquote('all 0.3s ease')
+  transition arguments
 
-// Alias: Border Box
+// Alias Border Box
 // A quicker way to specify border-box sizing.
 
 border-box()
-  box-sizing: border-box
+  box-sizing border-box
 
-// Alias: Opentype ligatures
+// Alias Opentype ligatures
 //
 // The vast majority of fonts contain lowercase and uppercase alphabets,
 // numerals, punctuation and accents. Many professionally-designed fonts
 // also contain ligatures, alternative characters, smallcaps, different kinds of
 // numbers, and sometimes much more besides. This enables it.
 //
-// Source: http://www.newnet-soft.com/blog/csstypography
-// Additional: http://blog.fontdeck.com/post/15777165734/opentype-1
+// Source http://www.newnet-soft.com/blog/csstypography
+// Additional http://blog.fontdeck.com/post/15777165734/opentype-1
 
 open-type-ligatures()
-  font-feature-settings: "liga", "dlig"
+  font-feature-settings 'liga', 'dlig'
 
-// Alias: Multi-line padding
+// Alias Multi-line padding
 //
 // You can not apply the background and padding to a <span> or an inline element.
 // The left and right padding will only apply to the very first and very last line.
@@ -55,12 +49,12 @@ open-type-ligatures()
 //
 // The attribute box-decoration-break solves this problem but needs prefixing.
 //
-// Source: http://codepen.io/chriscoyier/pen/hIvFe
+// Source http://codepen.io/chriscoyier/pen/hIvFe
 
 multi-line-padding()
-  box-decoration-break: clone;
+  box-decoration-break clone
 
-// Mixin: Rounded
+// Mixin Rounded
 //
 // Unless you are working with a ridiculously large element, this will round the
 // corners as much as css will allow. Even in IE.
@@ -68,37 +62,40 @@ multi-line-padding()
 // ex. rounded()
 
 rounded()
-  border-radius: 999px
+  border-radius 999px //
 
-// Mixin: Triangle
+// Mixin Triangle
 //
 // One of my favorites. Makes a little css triangle for you. Pass it a direction
 // (up, down, left, right), size (in pixels), and a color.
 //
 // ex. triangle()
-// ex. triangle: 'down' 15px blue
+// ex. triangle 'down' 15px blue
 
 triangle($direction = 'up', $size = 10px, $color = #000)
-  width: 0
-  height: 0
+  width 0
+  height 0
   if $direction == 'up'
-    border-left: $size solid transparent
-    border-right: $size solid transparent
-    border-bottom: $size solid $color
-  else if $direction == 'down'
-    border-left: $size solid transparent
-    border-right: $size solid transparent
-    border-top: $size solid $color
-  else if $direction == 'left'
-    border-top: $size solid transparent
-    border-bottom: $size solid transparent
-    border-right: $size solid $color
-  else if $direction == 'right'
-    border-top: $size solid transparent
-    border-bottom: $size solid transparent
-    border-left: $size solid $color
+    border-right $size solid transparent
+    border-bottom $size solid $color
+    border-left $size solid transparent
+  else
+    if $direction == 'down'
+      border-top $size solid $color
+      border-right $size solid transparent
+      border-left $size solid transparent
+    else
+      if $direction == 'left'
+        border-top $size solid transparent
+        border-right $size solid $color
+        border-bottom $size solid transparent
+      else
+        if $direction == 'right'
+          border-top $size solid transparent
+          border-bottom $size solid transparent
+          border-left $size solid $color
 
-// Mixin: Debug
+// Mixin Debug
 //
 // Debugging tool - adds a border to the current element, its children,
 // grandchildren, etc so you can see what's up – great for precise layout
@@ -106,8 +103,8 @@ triangle($direction = 'up', $size = 10px, $color = #000)
 // styles, forgot an alt on an image, left the alt blank, etc. Not to be used
 // in production, obviously.
 //
-// via dbox: http://codepen.io/dbox/pen/GJZzYo?editors=110
-
+// via dbox http://codepen.io/dbox/pen/GJZzYo?editors=110
+// @stlint-disable
 debug()
   border 1px solid MediumPurple
   > *
@@ -126,39 +123,39 @@ debug()
     border 1px solid DarkSeaGreen
 
   img
-    border: 1px solid #f00
-    -webkit-filter: hue-rotate(330deg) contrast(.75) saturate(6)
-    filter: hue-rotate(330deg) contrast(.75) saturate(6)
+    border 1px solid #f00
+    -webkit-filter hue-rotate(330deg) contrast(.75) saturate(6)
+    filter hue-rotate(330deg) contrast(.75) saturate(6)
 
   img[alt]
-    border: 1px solid LimeGreen
-    -webkit-filter: none
-    filter: none
+    border 1px solid LimeGreen
+    -webkit-filter none
+    filter none
 
-  img[alt=""]
-    border: 1px solid gold
-    -webkit-filter: contrast(1) saturate(2)
-    filter: contrast(1) saturate(2)
+  img[alt='']
+    border 1px solid gold
+    -webkit-filter contrast(1) saturate(2)
+    filter contrast(1) saturate(2)
 
   a
-    background: rgba(#f00, .1)
-    border: 1px solid #f00
+    background rgba(#f00, 0.1)
+    border 1px solid #f00
 
   a[title]
-    background: none
-    border-color: LimeGreen
+    background none
+    border-color LimeGreen
 
   style
-    border: block
+    border block
 
-  [style], style, [class=""], [id=""], a[href="#"]
-    background: rgba(yellow, .2)
-    border: 1px solid gold
-
-// Block Mixin: Quantity Queries
+  [style], style, [class=''], [id=''], a[href='#']
+    background rgba(yellow, 0.2)
+    border 1px solid gold
+// @stlint-enable
+// Block Mixin Quantity Queries
 //
 // Set rules for a selector based on a specific sibling count.
-// via: https://github.com/pascalduez/postcss-quantity-queries
+// via https://github.com/pascalduez/postcss-quantity-queries
 //
 // ex. +quantity-at-least(6)
 // ex. +quantity-at-most(12, div)
@@ -185,13 +182,13 @@ quantity-exactly($count = 4, $selector = li)
   & > {$selector}:nth-last-child({$count}):first-child ~ {$selector}
     {block}
 
-// Function: Rem Calculator
+// Function Rem Calculator
 //
 // Calculates and returns the rem value based on px input. Default base font
 // size is 16px, but can be changed with base-font-size.
 //
-// ex       : rem(30px) or rem(30)
-// returns  : 1.875rem
+// ex        rem(30px) or rem(30)
+// returns   1.875rem
 
 rem($value)
   $base-font-size ?= 16px
