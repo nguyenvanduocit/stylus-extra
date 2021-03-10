@@ -1,0 +1,28 @@
+{
+  "name": "stylus-extras",
+  "version": "1.0.0",
+  "description": "Useful utilities for working with Stylus",
+  "license": "MIT",
+  "scripts": {
+    "lint": "stlint"
+  },
+  "files": [
+    "styles"
+  ],
+  "keywords": [
+    "stylus",
+    "mixins",
+    "functions",
+    "helpers",
+    "helper",
+    "utility",
+    "util",
+    "utilities"
+  ],
+  "devDependencies": {
+    "stlint": "^1.0.65"
+  },
+  "dependencies": {
+    "stylus": "^0.54.8"
+  }
+}

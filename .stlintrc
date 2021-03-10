@@ -1,0 +1,13 @@
+{
+  "reporter": "raw",
+  "watch": false,
+  "path": "./styles",
+  "excludes": ["node_modules/"],
+  "stylusParserOptions": {},
+  "reportOptions": {
+    "columnSplitter": " | ",
+    "maxWidth": 70,
+    "minWidth": 70,
+    "truncate": false
+  }
+}

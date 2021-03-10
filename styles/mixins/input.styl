@@ -1,0 +1,37 @@
+radio($color = #0074d9)
+  cursor pointer
+  display block
+  line-height 2.5em
+
+  // Accessible hidden styles
+  [type="radio"]
+    border 0
+    clip rect(0 0 0 0)
+    height 1px
+    margin -1px
+    overflow hidden
+    padding 0
+    position absolute
+    width 1px
+
+    & + span
+      display block
+
+    // Unchecked
+    & + span:before
+      background rgba(#000,.15)
+      border 0.125em solid #fff
+      border-radius 1em
+      box-shadow 0 0 0 .1em rgba(#000, .25)
+      content ''
+      display inline-block
+      height 1em
+      margin-right 0.75em
+      transition 0.5s ease all
+      vertical-align -0.33em
+      width 1em
+
+    // Checked
+    &:checked + span:before, &:focus + span:before
+      background $color
+      box-shadow 0 0 0 0.25em rgba(#000, .15)
